@@ -14,6 +14,6 @@ def test_version():
 
 
 def test_version_dash_replace():
-    """Passes on poetry 1.2.1, fails on 1.1.13."""
+    """Passes on both versions of poetry."""
     import pkg_resources
     assert pkg_resources.get_distribution('testdots-cooltest').version == '0.1.0'
