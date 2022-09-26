@@ -6,7 +6,8 @@ This repo provides a reproducible example of the possible regression of
 
 The regression is shown in the [`test_version`](tests/test_mynamespace.py#L10)
 test. The name of the package is `testdots.cooltest`, but in poetry version
-1.2.1 this for some reason gets translated to `testdots-cooltest`.
+1.2.1 this for some reason gets translated to `testdots-cooltest`, with the dot
+being replaced with a dash somewhere in the installation process.
 
 Example:
 
@@ -38,4 +39,31 @@ tests/test_mynamespace.py .F.                                            [100%]
 =========================== short test summary info ============================
 FAILED tests/test_mynamespace.py::test_version - pkg_resources.DistributionNo...
 ========================= 1 failed, 2 passed in 0.11s ==========================
+```
+
+It can also be seen that the name is changed in the wheel file when performing a
+`poetry build`:
+
+```sh
+root@b6dc891939b0:/code# poetry build
+Building mynamespace.mypackage (0.1.0)
+  - Building sdist
+  - Built mynamespace.mypackage-0.1.0.tar.gz
+  - Building wheel
+  - Built mynamespace_mypackage-0.1.0-py3-none-any.whl
+root@b6dc891939b0:/code# pip install -q dist/mynamespace_mypackage-0.1.0-py3-none-any.whl 
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 22.0.4; however, version 22.2.2 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+root@b6dc891939b0:/code# pip show mynamespace.mypackage
+Name: mynamespace-mypackage
+Version: 0.1.0
+Summary: 
+Home-page: 
+Author: Your Name
+Author-email: you@example.com
+License: 
+Location: /usr/local/lib/python3.8/site-packages
+Requires: flake8, pytest
+Required-by: 
 ```
