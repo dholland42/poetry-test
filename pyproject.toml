@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "testdots.cooltest"
+name = "mynamespace.mypackage"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Test namespace pacakges with different poetry versions."
+authors = ["Daniel Holland <danielholland414@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "testdots" }]
+packages = [{ include = "mynamespace" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
