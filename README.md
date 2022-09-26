@@ -4,7 +4,7 @@ This repo provides a reproducible example of the possible regression of
 [issue #109](https://github.com/python-poetry/poetry/issues/109) in version
 1.2.1.
 
-The regression is shown in the [`test_version`](tests/test_cooltest.py#L10)
+The regression is shown in the [`test_version`](tests/test_mynamespace.py#L10)
 test. The name of the package is `testdots.cooltest`, but in poetry version
 1.2.1 this for some reason gets translated to `testdots-cooltest`.
 
